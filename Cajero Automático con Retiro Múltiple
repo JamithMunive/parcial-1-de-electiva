@@ -1,0 +1,56 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double saldo;
+        double retiro;
+        double totalRetirado = 0;
+        int numeroRetiros = 0;
+
+        Console.Write("Ingrese el saldo inicial: ");
+        saldo = double.Parse(Console.ReadLine());
+
+        while (saldo > 0)
+        {
+            Console.Write("¿Cuánto desea retirar? ");
+            retiro = double.Parse(Console.ReadLine());
+
+            if (retiro < 0)
+            {
+                break;
+            }
+
+            if (retiro > saldo)
+            {
+                Console.WriteLine("No puede retirar más dinero del saldo disponible.");
+            }
+            else
+            {
+                saldo = saldo - retiro;
+                totalRetirado = totalRetirado + retiro;
+                numeroRetiros++;
+
+                Console.WriteLine("Retiro realizado.");
+                Console.WriteLine("Saldo disponible: $" + saldo);
+            }
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Resultados:");
+        Console.WriteLine("Total retirado: $" + totalRetirado);
+        Console.WriteLine("Número de retiros: " + numeroRetiros);
+
+        if (numeroRetiros > 0)
+        {
+            Console.WriteLine("Promedio de los retiros: $" + (totalRetirado / numeroRetiros));
+        }
+        else
+        {
+            Console.WriteLine("No se realizaron retiros.");
+        }
+
+        Console.WriteLine("Saldo restante: $" + saldo);
+    }
+}
