@@ -1,0 +1,35 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double saldo;
+        double saldoInicial;
+        double interesTotal = 0;
+        double interes;
+        int meses = 0;
+
+        Console.Write("Ingrese el monto inicial: ");
+        saldo = double.Parse(Console.ReadLine());
+
+        saldoInicial = saldo;
+
+        while (saldo <= 2000)
+        {
+            interes = saldo * 0.05;
+            saldo = saldo + interes;
+
+            interesTotal = interesTotal + interes;
+            meses++;
+
+            Console.WriteLine("Mes " + meses + ": $" + saldo);
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Resultados:");
+        Console.WriteLine("Meses transcurridos: " + meses);
+        Console.WriteLine("Interés total generado: $" + interesTotal);
+        Console.WriteLine("Saldo final: $" + saldo);
+    }
+}
