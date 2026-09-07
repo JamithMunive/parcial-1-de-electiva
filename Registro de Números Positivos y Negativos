@@ -1,0 +1,94 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int numero;
+        int positivos = 0;
+        int negativos = 0;
+
+        double sumaPositivos = 0;
+        double sumaNegativos = 0;
+
+        int mayor = 0;
+        int menor = 0;
+
+        bool primerNumero = true;
+
+        while (true)
+        {
+            Console.Write("Ingrese un número (0 para terminar): ");
+            numero = int.Parse(Console.ReadLine());
+
+            if (numero == 0)
+            {
+                break;
+            }
+
+            if (numero > 0)
+            {
+                positivos++;
+                sumaPositivos = sumaPositivos + numero;
+            }
+            else
+            {
+                negativos++;
+                sumaNegativos = sumaNegativos + numero;
+            }
+
+            if (primerNumero)
+            {
+                mayor = numero;
+                menor = numero;
+                primerNumero = false;
+            }
+            else
+            {
+                if (numero > mayor)
+                {
+                    mayor = numero;
+                }
+
+                if (numero < menor)
+                {
+                    menor = numero;
+                }
+            }
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Resultados:");
+
+        Console.WriteLine("Números positivos: " + positivos);
+        Console.WriteLine("Números negativos: " + negativos);
+
+        if (positivos > 0)
+        {
+            Console.WriteLine("Promedio de positivos: " + (sumaPositivos / positivos));
+        }
+        else
+        {
+            Console.WriteLine("No se ingresaron positivos.");
+        }
+
+        if (negativos > 0)
+        {
+            Console.WriteLine("Promedio de negativos: " + (sumaNegativos / negativos));
+        }
+        else
+        {
+            Console.WriteLine("No se ingresaron negativos.");
+        }
+
+        if (!primerNumero)
+        {
+            Console.WriteLine("Número mayor: " + mayor);
+            Console.WriteLine("Número menor: " + menor);
+        }
+        else
+        {
+            Console.WriteLine("No se ingresaron números.");
+        }
+    }
+}
