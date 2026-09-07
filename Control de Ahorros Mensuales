@@ -1,0 +1,50 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double meta = 1000;
+        double ahorroTotal = 0;
+        double ahorro;
+        double menor = 0;
+        double mayor = 0;
+        int meses = 0;
+
+        while (ahorroTotal < meta)
+        {
+            Console.Write("Ingrese cuánto ahorró este mes: ");
+            ahorro = double.Parse(Console.ReadLine());
+
+            ahorroTotal = ahorroTotal + ahorro;
+            meses++;
+
+            if (meses == 1)
+            {
+                menor = ahorro;
+                mayor = ahorro;
+            }
+            else
+            {
+                if (ahorro < menor)
+                {
+                    menor = ahorro;
+                }
+
+                if (ahorro > mayor)
+                {
+                    mayor = ahorro;
+                }
+            }
+        }
+
+        double promedio = ahorroTotal / meses;
+
+        Console.WriteLine();
+        Console.WriteLine("Meta alcanzada");
+        Console.WriteLine("Meses: " + meses);
+        Console.WriteLine("Promedio de ahorro mensual: " + promedio);
+        Console.WriteLine("Menor ahorro: " + menor);
+        Console.WriteLine("Mayor ahorro: " + mayor);
+    }
+}
