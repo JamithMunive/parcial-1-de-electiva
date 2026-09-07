@@ -1,0 +1,64 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int secreto = 7;
+        int numero;
+        int intentos = 0;
+
+        double cuadrado;
+        double cuadradoSecreto;
+        double diferencia;
+        double menorDiferencia = 0;
+        double suma = 0;
+
+        cuadradoSecreto = secreto * secreto;
+
+        while (true)
+        {
+            Console.Write("Adivine el número secreto: ");
+            numero = int.Parse(Console.ReadLine());
+
+            intentos++;
+            suma = suma + numero;
+
+            cuadrado = numero * numero;
+
+            diferencia = Math.Abs(cuadrado - cuadradoSecreto);
+
+            if (intentos == 1)
+            {
+                menorDiferencia = diferencia;
+            }
+            else
+            {
+                if (diferencia < menorDiferencia)
+                {
+                    menorDiferencia = diferencia;
+                }
+            }
+
+            if (diferencia == 0)
+            {
+                Console.WriteLine("¡Número correcto!");
+                break;
+            }
+            else if (diferencia <= 10)
+            {
+                Console.WriteLine("Cerca");
+            }
+            else
+            {
+                Console.WriteLine("Muy lejos");
+            }
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Resultados:");
+        Console.WriteLine("Número de intentos: " + intentos);
+        Console.WriteLine("Diferencia más baja: " + menorDiferencia);
+        Console.WriteLine("Promedio de números ingresados: " + (suma / intentos));
+    }
+}
