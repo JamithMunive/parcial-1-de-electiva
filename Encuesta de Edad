@@ -1,0 +1,56 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int edad;
+        int menores = 0;
+        int adultos = 0;
+        int mayores = 0;
+        int cantidadPersonas = 0;
+        int sumaEdades = 0;
+
+        while (true)
+        {
+            Console.Write("Ingrese una edad (0 para terminar): ");
+            edad = int.Parse(Console.ReadLine());
+
+            if (edad == 0)
+            {
+                break;
+            }
+
+            sumaEdades = sumaEdades + edad;
+            cantidadPersonas++;
+
+            if (edad < 18)
+            {
+                menores++;
+            }
+            else if (edad <= 65)
+            {
+                adultos++;
+            }
+            else
+            {
+                mayores++;
+            }
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Resultados:");
+        Console.WriteLine("Menores de 18: " + menores);
+        Console.WriteLine("Personas entre 18 y 65: " + adultos);
+        Console.WriteLine("Mayores de 65: " + mayores);
+
+        if (cantidadPersonas > 0)
+        {
+            Console.WriteLine("Promedio de edad: " + (sumaEdades / (double)cantidadPersonas));
+        }
+        else
+        {
+            Console.WriteLine("No se ingresaron edades.");
+        }
+    }
+}
