@@ -5,12 +5,15 @@ class Program
     static void Main()
     {
         double lluvia;
-        int diasLluviaMayor20 = 0;
+        double total = 0;
+        double mayorLluvia = 0;
+        int dias = 0;
+        int diasMayor20 = 0;
         int diasSinLluvia = 0;
 
         while (true)
         {
-            Console.Write("Ingrese los milímetros de lluvia: ");
+            Console.Write("Ingrese los mm de lluvia: ");
             lluvia = double.Parse(Console.ReadLine());
 
             if (lluvia < 0)
@@ -18,20 +21,42 @@ class Program
                 break;
             }
 
+            dias++;
+            total = total + lluvia;
+
             if (lluvia > 20)
             {
-                diasLluviaMayor20++;
+                diasMayor20++;
             }
 
             if (lluvia == 0)
             {
                 diasSinLluvia++;
             }
+
+            if (lluvia > mayorLluvia)
+            {
+                mayorLluvia = lluvia;
+            }
         }
 
         Console.WriteLine();
         Console.WriteLine("Resultados:");
-        Console.WriteLine("Días con lluvia superior a 20 mm: " + diasLluviaMayor20);
+        Console.WriteLine("Días con lluvia superior a 20 mm: " + diasMayor20);
+        Console.WriteLine("Días sin lluvia: " + diasSinLluvia);
+        Console.WriteLine("Total de lluvia: " + total + " mm");
+
+        if (dias > 0)
+        {
+            Console.WriteLine("Promedio de lluvia: " + (total / dias) + " mm");
+            Console.WriteLine("Día más lluvioso: " + mayorLluvia + " mm");
+        }
+        else
+        {
+            Console.WriteLine("No se ingresaron datos.");
+        }
+    }
+} " + diasLluviaMayor20);
         Console.WriteLine("Días sin lluvia: " + diasSinLluvia);
     }
 }
