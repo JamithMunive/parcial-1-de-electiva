@@ -1,0 +1,37 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double lluvia;
+        int diasLluviaMayor20 = 0;
+        int diasSinLluvia = 0;
+
+        while (true)
+        {
+            Console.Write("Ingrese los milímetros de lluvia: ");
+            lluvia = double.Parse(Console.ReadLine());
+
+            if (lluvia < 0)
+            {
+                break;
+            }
+
+            if (lluvia > 20)
+            {
+                diasLluviaMayor20++;
+            }
+
+            if (lluvia == 0)
+            {
+                diasSinLluvia++;
+            }
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Resultados:");
+        Console.WriteLine("Días con lluvia superior a 20 mm: " + diasLluviaMayor20);
+        Console.WriteLine("Días sin lluvia: " + diasSinLluvia);
+    }
+}
